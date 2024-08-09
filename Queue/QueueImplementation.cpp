@@ -16,19 +16,26 @@ class Queue{
     }
 
     void push(int val){
-        if(back >= size){
+        if(back == size-1){
             cout<<"queue is Overflow"<<endl;
             return;
         }
         arr[++back] = val;
+        cout<<val<<" inserted"<<endl;
     }
     void pop(){
-        if(back == -1){
+        if(front>back){
             cout<<"Queue is empty"<<endl;
+            front = -1;
+            back = -1;
             return;
         }
-        cout<<arr[back]<<" deleted"<<endl;
-        back--;
+        cout<<arr[front]<<" deleted"<<endl;
+        front++;
+        if(front>back){
+            front = 0;
+            back = -1;
+        }
     }
     void top(){
         if(front > back){
@@ -42,11 +49,7 @@ class Queue{
 int main(){
     Queue q;
     q.push(1);
-    q.push(2);
-    q.push(3);
     q.pop();
     q.top();
-    
-
-    
+    q.pop();
 }
