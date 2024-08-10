@@ -13,6 +13,6 @@ void toh(int n,char s_rod,char d_rod,char a_rod){
 
 int main(){
     int n=3;
-    toh(n,'A','C','B');
+    toh(n,'1','3','2');
 
 }
