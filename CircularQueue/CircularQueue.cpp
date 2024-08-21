@@ -35,19 +35,12 @@ class CircularQueue{
             cout<<"Queue is Empty !!"<<endl;
             return;
         }
-        cout<<arr[front]<<" : top elemet"<<endl;
+        cout<<"Top element is : "<<arr[front]<<endl;
     }
 };
 
 int main(){
     CircularQueue cq(3);
     cq.push(1);
-    cq.pop();
     cq.top();
-    cq.push(2);
-    cq.push(3);
-    cq.push(4);
-    cq.pop();
-    cq.top();
-    cq.push(5);
 }
