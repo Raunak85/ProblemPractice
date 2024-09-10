@@ -10,6 +10,6 @@ int main(){
     }
     unordered_map<char,int> :: iterator it;
     for(it=freq.begin(); it != freq.end();it++){
-        cout<<it->first<<" "<<it->second<<endl;
+        cout<<it->first<<it->second;
     }
 }
