@@ -125,6 +125,14 @@ Node* insertInBST(Node* root,int data){
 
 //      Case 1 :      deletion leaf node in bst
 
+Node* inOrderPredecessor(Node* root){
+    root = root->left;
+    while(root->right != nullptr){
+        root = root->right;
+    }
+    return root;
+}
+
 Node* deleteNodeInBST(Node* root,int data){
     if(root == nullptr) return nullptr;
 
@@ -135,11 +143,31 @@ Node* deleteNodeInBST(Node* root,int data){
         root->right = deleteNodeInBST(root->right,data);
     }
     else{
+       
         if(root->left == nullptr && root->right == nullptr){
-            cout<<"deleted successfully !!! "<<root->data<<endl;
+            cout<<"Deleted Successful !! "<<data<<endl;
             delete root;
             return nullptr;
         }
+        else if(root->left != nullptr && root->right != nullptr){
+            int maxFromLeftSide = inOrderPredecessor(root)->data;
+            root->data = maxFromLeftSide;
+            root->left = deleteNodeInBST(root->left,maxFromLeftSide);
+            
+        }else{
+            Node* child;
+            if(root->left != nullptr) {
+                child = root->left;
+            }else{
+                child = root->right;
+            }
+            // cout<<"Delete Successful !!!! " <<root->data<<endl;
+            delete root;
+            return child;
+        }
+        cout<<"Deleted Successful !! "<<data<<endl;
+        
+
     }
     return root;
 }
@@ -150,7 +178,7 @@ int main(){
     levelOrder(root);
     cout<<endl;
     // insertInBST(root,5);
-    deleteNodeInBST(root,25);
+    deleteNodeInBST(root,10);
     levelOrder(root);
     // inorder(root);
     // preorder(root);
